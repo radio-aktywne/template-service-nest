@@ -1,0 +1,30 @@
+---
+# Questions
+
+appname:
+  type: str
+  help: The name of the app
+
+envprefix:
+  type: str
+  help: The prefix for environment variables
+  default: "{{ appname | upper | replace('-', '_') }}"
+
+description:
+  type: str
+  help: A short description of the app
+
+docs:
+  type: bool
+  help: Whether to include documentation
+  default: true
+
+releases:
+  type: bool
+  help: Whether you plan to make releases
+  default: true
+
+# Configuration
+
+_subdirectory: src
+_answers_file: .copier-answers.yaml
