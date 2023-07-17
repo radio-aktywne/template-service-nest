@@ -2,7 +2,7 @@
 
 <div align="center">
 
-React app template ⚛️
+NestJS app template 🐈
 
 [![Lint](https://github.com/radio-aktywne/template-app-nest/actions/workflows/lint.yaml/badge.svg)](https://github.com/radio-aktywne/template-app-nest/actions/workflows/lint.yaml)
 [![Test](https://github.com/radio-aktywne/template-app-nest/actions/workflows/test.yaml/badge.svg)](https://github.com/radio-aktywne/template-app-nest/actions/workflows/test.yaml)
@@ -14,7 +14,7 @@ React app template ⚛️
 ## 💡 About
 
 This repository contains a [`copier`](https://copier.readthedocs.io) template
-that can be used to create [`React`](https://react.dev) apps for
+that can be used to create [`NestJS`](https://nestjs.com) apps for
 [`radio-aktywne`](https://github.com/radio-aktywne).
 
 ## 📜 Usage
