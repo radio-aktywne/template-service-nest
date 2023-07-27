@@ -10,7 +10,7 @@ def data() -> dict[str, str]:
 
     return {
         "appname": "foo",
-        "description": "NestJS app",
+        "description": "Example app",
     }
 
 
