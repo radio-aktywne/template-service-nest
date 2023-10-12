@@ -1,8 +1,9 @@
 import { Controller, Get } from "@nestjs/common";
 import { ApiOkResponse } from "@nestjs/swagger";
-import { GetResponseDTO } from "./models";
+import { GetResponse } from "./models";
 import { RootRouteService } from "./service";
 
+/** Root controller. */
 @Controller()
 export class RootRouteController {
   constructor(private readonly rootRouteService: RootRouteService) {}
@@ -10,9 +11,9 @@ export class RootRouteController {
   @Get()
   @ApiOkResponse({
     description: "OK",
-    type: GetResponseDTO,
+    type: GetResponse,
   })
-  async get(): Promise<GetResponseDTO> {
+  async get(): Promise<GetResponse> {
     const foo = await this.rootRouteService.get();
 
     return { foo };
