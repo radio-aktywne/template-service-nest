@@ -18,15 +18,15 @@ module.exports = {
     "prettier",
   ],
 
-  // Don't ignore config files
-  ignorePatterns: ["!.*"],
-
   overrides: [
-    // Use Node.js environment for CommonJS files
+    // Treat .cjs files as configuration
     {
-      files: ["**/*.cjs"],
+      files: ["*.cjs"],
       env: {
         node: true,
+      },
+      parserOptions: {
+        sourceType: "script",
       },
     },
   ],

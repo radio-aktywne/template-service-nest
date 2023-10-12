@@ -1,7 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Equals } from "class-validator";
 
-export class GetResponseDTO {
+/** Response for GET requests. */
+export class GetResponse {
   @Equals("bar")
   @ApiProperty({
     description: "Should be 'bar'.",

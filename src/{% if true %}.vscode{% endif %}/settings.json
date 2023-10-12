@@ -5,7 +5,8 @@
     "**/.trunk/*logs/": true,
     "**/.trunk/*notifications/": true,
     "**/.trunk/*out/": true,
-    "**/.trunk/*plugins/": true
+    "**/.trunk/*plugins/": true,
+    "**/.trunk/*tools/": true
   },
   // Exclude Trunk generated files
   "files.watcherExclude": {
@@ -13,9 +14,10 @@
     "**/.trunk/*logs/": true,
     "**/.trunk/*notifications/": true,
     "**/.trunk/*out/": true,
-    "**/.trunk/*plugins/": true
+    "**/.trunk/*plugins/": true,
+    "**/.trunk/*tools/": true
   },
-  "[javascript][javascriptreact][typescript][typescriptreact]": {
+  "[javascript][typescript]": {
     "editor.tabSize": 2
   }
 }

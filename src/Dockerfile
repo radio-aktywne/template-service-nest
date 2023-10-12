@@ -1,5 +1,5 @@
 # Use generic base image with Nix installed
-FROM nixos/nix:2.16.1 AS base-env
+FROM nixos/nix:2.18.0 AS base-env
 
 # Configure Nix
 RUN echo "extra-experimental-features = nix-command flakes" >> /etc/nix/nix.conf
@@ -8,7 +8,7 @@ RUN echo "extra-experimental-features = nix-command flakes" >> /etc/nix/nix.conf
 WORKDIR /env/
 
 # Copy Nix files
-COPY *.nix flake.lock ./
+COPY flake.lock *.nix ./
 
 # Copy env script
 COPY ./scripts/env.sh ./scripts/env.sh
@@ -54,16 +54,15 @@ SHELL ["./scripts/shell.sh"]
 COPY package.json package-lock.json .npmrc ./
 
 # Install dependencies
+# hadolint ignore=SC2239
 RUN npm ci
 
 # Copy everything else
 COPY . .
 
-# Build
-RUN npm run build
-
-# Keep only runtime dependencies
-RUN npm prune --production
+# Build and keep only runtime dependencies
+# hadolint ignore=SC2239
+RUN npm run build && npm prune --production
 
 # Ubuntu is probably the safest choice
 FROM ubuntu:23.04 AS runtime
