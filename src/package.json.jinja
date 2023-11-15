@@ -4,8 +4,9 @@
   "scripts": {
     "dev": "nest start --debug --watch --preserveWatchOutput",
     "build": "nest build",
-    "clean": "rm --recursive --force build",
-    "update": "ncu --peer --upgrade"
+    "clean": "rm --recursive --force build/",
+    "update": "ncu --peer --doctor --upgrade && npm i --no-audit --no-fund",
+    "test": "npm run build"
   },
   "dependencies": {
     "@fastify/static": "^6.12.0",
@@ -24,8 +25,8 @@
     "@nestjs/cli": "^10.2.0",
     "@nestjs/schematics": "^10.0.0",
     "@types/node": "^18.18.0",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
     "eslint-config-prettier": "^9.0.0",
     "npm-check-updates": "^16.14.0",
     "typescript": "^5.2.0"
