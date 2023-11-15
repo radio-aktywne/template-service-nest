@@ -11,27 +11,27 @@ WORKDIR /env/
 COPY flake.lock *.nix ./
 
 # Copy env script
-COPY ./scripts/env.sh ./scripts/env.sh
+COPY scripts/env.sh scripts/env.sh
 
 FROM base-env AS build-env
 
 # Build build shell closure and activation script
 RUN \
     # Mount cached store paths
-    --mount=type=cache,target=/nix-store-cache \
+    --mount=type=cache,target=/nix-store-cache/ \
     # Mount Nix evaluation cache
-    --mount=type=cache,target=/root/.cache/nix \
-    ./scripts/env.sh build ./build /nix-store-cache
+    --mount=type=cache,target=/root/.cache/nix/ \
+    ./scripts/env.sh build build/ /nix-store-cache/
 
 FROM base-env AS runtime-env
 
 # Build runtime shell closure and activation script
 RUN \
     # Mount cached store paths
-    --mount=type=cache,target=/nix-store-cache \
+    --mount=type=cache,target=/nix-store-cache/ \
     # Mount Nix evaluation cache
-    --mount=type=cache,target=/root/.cache/nix \
-    ./scripts/env.sh runtime ./build /nix-store-cache
+    --mount=type=cache,target=/root/.cache/nix/ \
+    ./scripts/env.sh runtime build/ /nix-store-cache/
 
 # Ubuntu is probably the safest choice for a runtime container right now
 FROM ubuntu:23.10 as build
@@ -47,18 +47,18 @@ COPY --from=build-env /env/build/activate /env/activate
 WORKDIR /build/
 
 # Setup entrypoint for RUN commands
-COPY ./scripts/shell.sh ./scripts/shell.sh
+COPY scripts/shell.sh scripts/shell.sh
 SHELL ["./scripts/shell.sh"]
 
 # Copy package files
-COPY package.json package-lock.json .npmrc ./
+COPY package.json package-lock.json ./
 
 # Install dependencies
 # hadolint ignore=SC2239
 RUN npm ci
 
 # Copy everything else
-COPY . .
+COPY ./ ./
 
 # Build and keep only runtime dependencies
 # hadolint ignore=SC2239
@@ -81,15 +81,15 @@ WORKDIR /app/
 RUN useradd --create-home app
 
 # Setup entrypoint for RUN commands
-COPY ./scripts/shell.sh ./scripts/shell.sh
+COPY scripts/shell.sh scripts/shell.sh
 SHELL ["./scripts/shell.sh"]
 
 # Copy app files from build
-COPY --from=build /build/build/ ./build/
+COPY --from=build /build/build/ build/
 # Copy dependencies from build
-COPY --from=build /build/node_modules/ ./node_modules/
+COPY --from=build /build/node_modules/ node_modules/
 
 # Setup main entrypoint
-COPY ./scripts/entrypoint.sh ./scripts/entrypoint.sh
+COPY scripts/entrypoint.sh scripts/entrypoint.sh
 ENTRYPOINT ["./scripts/entrypoint.sh", "node", "build/main.js"]
 CMD []
