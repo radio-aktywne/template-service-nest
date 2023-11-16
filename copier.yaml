@@ -28,6 +28,11 @@ envprefix:
   help: The prefix for environment variables
   default: "{{ appname | upper | replace('-', '_') }}"
 
+port:
+  type: int
+  help: The port on which the app will listen
+  default: 3000
+
 docs:
   type: bool
   help: Whether to include a documentation site for the app

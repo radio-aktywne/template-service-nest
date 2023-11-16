@@ -8,11 +8,11 @@ export class ConfigBuilder {
   public static build(): Config {
     const config = {
       server: {
-        host: process.env.{{ envprefix }}_SERVER__HOST || "0.0.0.0",
+        host: process.env.{{ envprefix }}__SERVER__HOST || "0.0.0.0",
         port:
-          process.env.{{ envprefix }}_SERVER__PORT === undefined
-            ? 3000
-            : parseInt(process.env.{{ envprefix }}_SERVER__PORT, 10),
+          process.env.{{ envprefix }}__SERVER__PORT === undefined
+            ? {{ port }}
+            : parseInt(process.env.{{ envprefix }}__SERVER__PORT, 10),
       },
     };
 
