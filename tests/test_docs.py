@@ -18,6 +18,7 @@ def data() -> dict[str, str]:
         "reponame": "app-foo",
         "repourl": "https://github.com/radio-aktywne/app-foo",
         "envprefix": "FOO",
+        "port": "3000",
         "docs": "true",
         "docsurl": "https://radio-aktywne.github.io/app-foo",
         "releases": "false",
