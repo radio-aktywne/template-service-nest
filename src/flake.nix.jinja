@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
     flake-parts = {
@@ -36,6 +36,7 @@
         ...
       }: let
         node = pkgs.nodejs;
+        cacert = pkgs.cacert;
         nil = pkgs.nil;
         task = pkgs.go-task;
         coreutils = pkgs.coreutils;
@@ -67,6 +68,7 @@
 
             packages = [
               node
+              cacert
               nil
               task
               coreutils
@@ -76,7 +78,6 @@
 
             shellHook = ''
               export TMPDIR=/tmp
-              task install
             '';
           };
 
@@ -85,6 +86,7 @@
 
             packages = [
               node
+              cacert
               task
               coreutils
             ];
@@ -99,6 +101,7 @@
 
             packages = [
               node
+              cacert
             ];
 
             shellHook = ''
@@ -111,6 +114,7 @@
 
             packages = [
               node
+              cacert
               tini
               su-exec
             ];
