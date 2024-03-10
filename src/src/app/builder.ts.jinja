@@ -68,8 +68,8 @@ export class AppBuilder {
 
   private configureSwagger(app: NestFastifyApplication): void {
     const swaggerConfig = new DocumentBuilder()
-      .setTitle("{{ appname }}")
-      .setDescription("{{ appname }} api")
+      .setTitle("{{ appname }} app")
+      .setDescription("{{ description }}")
       .build();
 
     const swaggerOptions = {
