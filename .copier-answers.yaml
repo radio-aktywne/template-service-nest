@@ -1,9 +1,9 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 0.10.1
+_commit: 0.11.0
 _src_path: gh:radio-aktywne/template-meta
 accountname: radio-aktywne
-description: NestJS app template 🐈
-reponame: template-app-nest
-repourl: https://github.com/radio-aktywne/template-app-nest
+description: NestJS service template 🐈
+reponame: template-service-nest
+repourl: https://github.com/radio-aktywne/template-service-nest
 templatename: nest
-type: app
+type: service
